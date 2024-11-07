@@ -1,0 +1,57 @@
+{
+  "name": "@zwight/g6-extension-vue",
+  "version": "0.0.1",
+  "description": "Using Vue Component to Define Your G6 Graph Node",
+  "keywords": [
+    "antv",
+    "g6",
+    "extension",
+    "vue",
+    "node"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zwight/g6-extension-vue.git"
+  },
+  "license": "MIT",
+  "author": "zwight0705@gmail.com",
+  "homepage": "https://github.com/zwight/g6-extension-vue",
+  "main": "lib/index.js",
+  "module": "esm/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "run-p build:*",
+    "build:cjs": "rimraf ./lib && tsc --module commonjs --outDir lib -p tsconfig.build.json",
+    "build:esm": "rimraf ./esm && tsc --module ESNext --outDir esm -p tsconfig.build.json",
+    "build:umd": "rimraf ./dist && rollup -c",
+    "ci": "run-s lint type-check build",
+    "dev": "vite",
+    "lint": "eslint ./src __tests__ --quiet && prettier ./src __tests__ --write",
+    "prepublishOnly": "npm run ci",
+    "type-check": "tsc --noEmit -p tsconfig.test.json"
+  },
+  "dependencies": {
+    "@vitejs/plugin-vue-jsx": "^4.0.1",
+    "vue": "^3.5.12"
+  },
+  "devDependencies": {
+    "@antv/g6": "^5.0.28",
+    "@rollup/plugin-commonjs": "^28.0.1",
+    "@rollup/plugin-node-resolve": "^15.3.0",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^12.1.1",
+    "@rushstack/eslint-patch": "^1.3.3",
+    "@vitejs/plugin-vue": "^5.1.4",
+    "@vue/eslint-config-prettier": "^8.0.0",
+    "@vue/eslint-config-typescript": "^12.0.0",
+    "eslint": "8.49.0",
+    "eslint-plugin-vue": "^9.17.0",
+    "less": "^4.2.0",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^6.0.1",
+    "rollup-plugin-polyfill-node": "^0.13.0",
+    "rollup-plugin-visualizer": "^5.12.0",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.10"
+  }
+}
