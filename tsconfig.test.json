@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "paths": {
+            "@zwight/g6-extension-vue": [
+                "./src/index.ts"
+            ]
+        },
+        "skipLibCheck": true,
+        "jsx": "preserve",
+        "jsxImportSource": "vue",
+    },
+    "include": [
+        "src/**/*",
+        "__tests__/**/*",
+    ],
+    "extends": "./tsconfig.json"
+}
