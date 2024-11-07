@@ -1,6 +1,6 @@
 {
   "name": "@zwight/g6-extension-vue",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Using Vue Component to Define Your G6 Graph Node",
   "keywords": [
     "antv",
@@ -19,6 +19,11 @@
   "main": "lib/index.js",
   "module": "esm/index.js",
   "types": "lib/index.d.ts",
+  "files": [
+    "esm",
+    "lib",
+    "README"
+  ],
   "scripts": {
     "build": "run-p build:*",
     "build:cjs": "rimraf ./lib && tsc --module commonjs --outDir lib -p tsconfig.build.json",
