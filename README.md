@@ -14,7 +14,7 @@ npm install @zwight/g6-extension-vue
 
 ```js
 import { ExtensionCategory, register } from '@antv/g6';
-import { VueNode } from '@antvzwight/g6-extension-vue';
+import { VueNode } from '@zwight/g6-extension-vue';
 
 register(ExtensionCategory.NODE, 'vue', VueNode);
 ```
