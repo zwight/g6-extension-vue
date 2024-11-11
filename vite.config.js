@@ -22,5 +22,6 @@ export default defineConfig({
     alias: {
       '@zwight/g6-extension-vue': path.resolve(__dirname, './src'),
     },
+    dedupe: ['vue']
   },
 });

@@ -1,6 +1,6 @@
 {
   "name": "@zwight/g6-extension-vue",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Using Vue Component to Define Your G6 Graph Node",
   "keywords": [
     "antv",
@@ -36,10 +36,10 @@
     "type-check": "tsc --noEmit -p tsconfig.test.json"
   },
   "dependencies": {
-    "@vitejs/plugin-vue-jsx": "^4.0.1",
-    "vue": "^3.5.12"
   },
   "devDependencies": {
+    "vue": "^3.5.12",
+    "@vitejs/plugin-vue-jsx": "^4.0.1",
     "@antv/g6": "^5.0.28",
     "@rollup/plugin-commonjs": "^28.0.1",
     "@rollup/plugin-node-resolve": "^15.3.0",
