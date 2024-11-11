@@ -32,7 +32,7 @@ export class VueNode extends HTML {
   }
 
   public destroy(): void {
-    this.getDomElement().remove();
+    render(null, this.getDomElement());
     super.destroy();
   }
 }
