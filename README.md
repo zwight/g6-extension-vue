@@ -23,11 +23,13 @@ register(ExtensionCategory.NODE, 'vue', VueNode);
 
 Vue Node:
 
+JSX Component
 ```jsx
 const VueNode = () => {
   return <div>node</div>;
 };
 ```
+OR Vue Component
 ```vue
 <script setup lang="ts">
 </script>
@@ -41,7 +43,10 @@ const VueNode = () => {
 
 Use VueNode:
 
-```jsx
+```vue
+<script setup lange="tsx">
+import VueNode from vueNode.vue;
+
 const graph = new Graph({
   // ... other options
   node: {
@@ -51,6 +56,7 @@ const graph = new Graph({
     },
   },
 });
+</script>
 ```
 
 ## Thanks
