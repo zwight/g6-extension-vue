@@ -24,10 +24,13 @@ export class VueNode extends HTML {
     newValue: any,
   ): void {
     if (name === "component" && oldValue !== newValue) {
-      render(
-        (this.attributes as unknown as VueNodeStyleProps).component,
-        this.getDomElement(),
-      );
+      render(null, this.getDomElement());
+      setTimeout(() => {
+        render(
+          (this.attributes as unknown as VueNodeStyleProps).component,
+          this.getDomElement(),
+        );
+      });
     }
   }
 

@@ -11,12 +11,15 @@ export class VueNode extends HTML {
     }
     attributeChangedCallback(name, oldValue, newValue) {
         if (name === "component" && oldValue !== newValue) {
-            render(this.attributes.component, this.getDomElement());
+            render(null, this.getDomElement());
+            setTimeout(() => {
+                render(this.attributes.component, this.getDomElement());
+            });
         }
     }
     destroy() {
-        this.getDomElement().remove();
+        render(null, this.getDomElement());
         super.destroy();
     }
 }
-//# sourceMappingURL=node.jsx.map
+//# sourceMappingURL=node.js.map
