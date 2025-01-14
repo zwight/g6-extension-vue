@@ -1,27 +1,61 @@
-<script setup lang="ts">
+<script setup lang="tsx">
 import type { NodeData, TreeData } from "@antv/g6";
 import { ExtensionCategory, Graph, register, treeToGraphData } from "@antv/g6";
-import { VueNode } from "@zwight/g6-extension-vue";
-import vueEle from "./vueEle.vue";
+import { VueNode, GVueNode } from "@zwight/g6-extension-vue";
+import VueEle from "./vueEle.vue";
 import Node from "./vue-node";
-import { h, onMounted } from "vue";
+import VueGNode from "./vueGNode";
+import { h, onMounted, ref } from "vue";
 
 register(ExtensionCategory.NODE, "vue", VueNode);
+register(ExtensionCategory.NODE, "g", GVueNode);
+
+const isG = true;
 
 const initGraph = async () => {
   const res = await fetch(
     "https://assets.antv.antgroup.com/g6/decision-tree.json",
   ).then((res) => res.json());
-  const data = treeToGraphData(res, {
-    getNodeData: (datum: TreeData, depth: number) => {
-      if (!datum.style) datum.style = {};
-      // 隐藏三级以上节点
-      datum.style.collapsed = depth >= 2;
-      if (!datum.children) return datum as NodeData;
-      const { children, ...restDatum } = datum;
-      return { ...restDatum, children: children.map((child) => child.id) };
-    },
-  });
+  const data = isG
+    ? {
+        nodes: [
+          {
+            id: "node-1",
+            data: {
+              name: "Module",
+              type: "module",
+              status: "success",
+              success: 90,
+              time: 58,
+              failure: 8,
+            },
+            style: { x: 100, y: 100 },
+          },
+          {
+            id: "node-2",
+            data: {
+              name: "Process",
+              type: "process",
+              status: "error",
+              success: 11,
+              time: 12,
+              failure: 26,
+            },
+            style: { x: 300, y: 100 },
+          },
+        ],
+        edges: [{ source: "node-1", target: "node-2" }],
+      }
+    : treeToGraphData(res, {
+        getNodeData: (datum: TreeData, depth: number) => {
+          if (!datum.style) datum.style = {};
+          // 隐藏三级以上节点
+          datum.style.collapsed = depth >= 2;
+          if (!datum.children) return datum as NodeData;
+          const { children, ...restDatum } = datum;
+          return { ...restDatum, children: children.map((child) => child.id) };
+        },
+      });
   const graph = new Graph({
     container: "container",
     autoResize: true,
@@ -33,13 +67,16 @@ const initGraph = async () => {
       duration: 300,
     },
     node: {
-      type: "vue",
+      type: isG ? "g" : "vue",
       style: {
         size: [200, 60],
         component: (data: any) => {
-          console.log(data);
-          // return Node({})
-          return h(vueEle, { data });
+          // console.log(data);
+          return isG ? (
+            <VueGNode data={data} size={[200, 60]} />
+          ) : (
+            <VueEle data={data} />
+          );
         },
       },
     },
