@@ -4,13 +4,13 @@ This extension allows you to define G6 node by Vue component and JSX syntax.
 
 ## Usage
 
-1. Install
+### 1. Install
 
 ```bash
 npm install @zwight/g6-extension-vue
 ```
 
-2. Import and Register
+### 2. Import and Register
 
 ```js
 import { ExtensionCategory, register } from '@antv/g6';
@@ -20,9 +20,9 @@ register(ExtensionCategory.NODE, 'vue', VueNode);
 register(ExtensionCategory.NODE, 'g', GVueNode);
 ```
 
-3. Define Node
+### 3. Define Node
 
-Vue Node:
+#### Vue Node:
 
 JSX Component
 ```jsx
@@ -40,7 +40,7 @@ OR Vue Component
 </template>
 ```
 
-G Node:
+#### G Node:
 ```jsx
 import { Group, Rect, Text } from '@zwight/g6-extension-vue';
 
@@ -52,9 +52,9 @@ const GComponent = () => {
 };
 ```
 
-4. Use
+### 4. Use
 
-Use VueNode:
+#### Use VueNode:
 
 ```vue
 <script setup lange="tsx">
@@ -76,7 +76,7 @@ const graph = new Graph({
 </script>
 ```
 
-Use GNode:
+#### Use GNode:
 ```vue
 <script setup lange="tsx">
 import GComponent from gComponent;
