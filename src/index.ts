@@ -1,3 +1,2 @@
-export { VueNode } from "./vue";
-
-export type { VueNodeStyleProps } from "./vue";
+export * from "./vue";
+export * from "./g";

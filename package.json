@@ -1,6 +1,6 @@
 {
   "name": "@zwight/g6-extension-vue",
-  "version": "0.0.8",
+  "version": "0.1.0",
   "description": "Using Vue Component to Define Your G6 Graph Node",
   "keywords": [
     "antv",

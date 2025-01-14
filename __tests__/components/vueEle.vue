@@ -4,6 +4,7 @@ import { computed, defineProps } from "vue";
 const props = defineProps<{
   data: any;
 }>();
+console.log(props.data);
 const COLORS: any = {
   B: "#1783FF",
   R: "#F46649",

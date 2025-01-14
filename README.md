@@ -14,9 +14,10 @@ npm install @zwight/g6-extension-vue
 
 ```js
 import { ExtensionCategory, register } from '@antv/g6';
-import { VueNode } from '@zwight/g6-extension-vue';
+import { VueNode, GVueNode } from '@zwight/g6-extension-vue';
 
 register(ExtensionCategory.NODE, 'vue', VueNode);
+register(ExtensionCategory.NODE, 'g', GVueNode);
 ```
 
 3. Define Node
@@ -25,8 +26,8 @@ Vue Node:
 
 JSX Component
 ```jsx
-const VueNode = () => {
-  return <div>node</div>;
+const VueComponent = () => {
+  return <div>component</div>;
 };
 ```
 OR Vue Component
@@ -35,8 +36,20 @@ OR Vue Component
 </script>
 
 <template>
-    <div>vue node</div>
+    <div>vue component</div>
 </template>
+```
+
+G Node:
+```jsx
+import { Group, Rect, Text } from '@zwight/g6-extension-vue';
+
+const GComponent = () => {
+  return <Group>
+    <Rect width={100} height={100}></Rect>
+    <Text text={"node"} />
+  <Group>
+};
 ```
 
 4. Use
@@ -45,14 +58,38 @@ Use VueNode:
 
 ```vue
 <script setup lange="tsx">
-import VueNode from vueNode.vue;
+import VueComponent from vueComponent.vue;
+import { ExtensionCategory, register } from '@antv/g6';
+import { VueNode } from '@zwight/g6-extension-vue';
+
+register(ExtensionCategory.NODE, 'vue', VueNode);
 
 const graph = new Graph({
   // ... other options
   node: {
     type: 'vue',
     style: {
-      component: () => <VueNode />,
+      component: () => <VueComponent />,
+    },
+  },
+});
+</script>
+```
+
+Use GNode:
+```vue
+<script setup lange="tsx">
+import GComponent from gComponent;
+import { ExtensionCategory, register } from '@antv/g6';
+import { GVueNode } from "@zwight/g6-extension-vue";
+register(ExtensionCategory.NODE, 'g', GVueNode);
+
+const graph = new Graph({
+  // ... other options
+  node: {
+    type: 'g',
+    style: {
+      component: () => <GComponent />,
     },
   },
 });
